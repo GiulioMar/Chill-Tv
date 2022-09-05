@@ -4,6 +4,8 @@ const requests = {
   fetchTrendingMovie: `/trending/movie/day?api_key=${API_KEY}`,
   fetchTrendingSeries: `/trending/tv/day?api_key=${API_KEY}`,
   fetchTrendingPerson: `/trending/person/day?api_key=${API_KEY}`,
+  fetchTopRated: `/movie/top_rated?api_key=${API_KEY}`
+
 };
 
 export default requests;
