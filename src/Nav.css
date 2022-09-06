@@ -1,0 +1,29 @@
+.nav {
+  display: flex;
+  flex-direction: row;
+  color: white;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  background-color: rgba(17, 17, 17, 0.699);
+  width: 100%;
+  height: 80px;
+  transition-timing-function: ease-in;
+  transition: all 0.5s;
+}
+
+.nav_logo {
+  width: 110px;
+  height: 80px;
+}
+
+a {
+  padding-right: 15px;
+  text-decoration: none;
+  color: white;
+}
+
+.categories {
+  display: flex;
+  padding: 25px;
+}
