@@ -23,7 +23,14 @@ a {
   color: white;
 }
 
+a:hover{
+    color: rgb(249, 1, 1);
+    
+}
+
 .categories {
   display: flex;
   padding: 25px;
+  font-weight: 500;
 }
+

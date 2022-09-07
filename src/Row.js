@@ -66,25 +66,27 @@ function Row({ title, fetchUrl }) {
         </div>
       );
       break;
-    case "Trending Actors" :
-     return (
+    case "Trending Actors":
+      return (
         <div className="row">
           <h2>{title} </h2>
 
           <div className="row_posters">
-            {movies.filter((el) => el.profile_path).map((movie) => (
-              <img
-                key={movie.id}
-                onClick={() => handleClick(movie)}
-                className="row_poster"
-                src={`${base_url}${movie.poster_path || movie.profile_path} `}
-                alt={movie.name}
-              />
-            ))}
+            {movies
+              .filter((el) => el.profile_path)
+              .map((movie) => (
+                <img
+                  key={movie.id}
+                  onClick={() => handleClick(movie)}
+                  className="row_poster"
+                  src={`${base_url}${movie.poster_path || movie.profile_path} `}
+                  alt={movie.name}
+                />
+              ))}
           </div>
           {trailerUrl && <YouTube videoId={trailerUrl} opts={opts} />}
         </div>
-     )
+      );
   }
 }
 

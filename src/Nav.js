@@ -4,12 +4,12 @@ import "./Nav.css";
 function Nav() {
   return (
     <div className="nav">
-      <div className="img_logo">
-        <img className="nav_logo" src="logo2.png" alt="logo" />
-      </div>
+      <a href="top">
+        <img className="nav_logo" src="logo2.png" alt="logo" /> 
+      </a>
       <div className="categories">
-        <a href="#wrapper-films">Films</a>
-        <a href="#wrapper-series">Tv-Series</a>   
+        <a href="#tMovies">Films</a>
+        <a href="#tSeries">Tv-Series</a>   
       </div>
     </div>
   );
