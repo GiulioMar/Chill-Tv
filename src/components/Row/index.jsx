@@ -1,7 +1,7 @@
 import YouTube from "react-youtube";
 import movieTrailer from "movie-trailer";
 import React, { useState, useEffect } from "react";
-import axios from "../../axios";
+import axios from "../../utils/axios";
 import "./style.css";
 import { Link } from "react-router-dom";
 
@@ -38,7 +38,7 @@ function Row({ title, fetchUrl }) {
 
           <div className="row_posters">
             {movies.map((movie) => (
-              <Link to={"/detail/" + movie.title || movie.name}>
+              <Link to={`/detail/${movie.title || movie.name}/${movie.id}`}>
                 <img
                   key={movie.id}
                   className="row_poster"

@@ -1,24 +1,26 @@
 import React from "react";
 import "./App.css";
 import Row from "./components/Row";
-import requests from "./request";
+import requests from "./utils/request";
 import TopBanner from "./components/TopBanner";
 import Nav from "./components/Nav";
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
-import Detail from "./pages/Detail";
-import { Home } from "./pages";
+import { Home, Detail } from "./pages";
+import { GlobalLayout } from "./components";
 
 function App() {
   return (
-    <Router>
-      <Routes>
-        <Route path="/"  render={() => <Home /> }/>
-        <Route path="*"  element={<Navigate  to="/" replace/>}/>
-
-
-
-      </Routes>
-    </Router>
+    <div className="app">
+      <GlobalLayout>
+        <Router>
+          <Routes>
+            <Route path="/" element={<Home />}/>
+            <Route path="/detail/:slug/:id" element={<Detail />}/>
+            <Route path="*"  element={<Navigate  to="/" replace/>}/>
+          </Routes>
+        </Router>
+      </GlobalLayout>
+    </div>
   );
 }
 

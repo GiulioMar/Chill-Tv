@@ -1,15 +1,15 @@
-import React from 'react'
-import Nav from '../../components/Nav'
+import React, { useEffect, useState } from 'react'
+import { useLocation, useParams } from 'react-router-dom';
+import './style.css'
 
 function Detail() {
+  let {slug: productSlug, id: productId} = useParams();
+  let location = useLocation();
+  console.log('location', location);
+
   return (
     <div className="detail">
-
-      <Nav />
-
-
-
-
+      DETAIL {productSlug} {productId}
     </div>
   )
 }
