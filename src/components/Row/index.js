@@ -1,8 +1,9 @@
 import YouTube from "react-youtube";
 import movieTrailer from "movie-trailer";
 import React, { useState, useEffect } from "react";
-import axios from "./axios";
-import "./Row.css";
+import axios from "../../axios";
+import "./style.css";
+import { Link } from "react-router-dom";
 
 const base_url = "https://image.tmdb.org/t/p/original/";
 
@@ -27,22 +28,6 @@ function Row({ title, fetchUrl }) {
     },
   };
 
-  const handleClick = (movie) => {
-    if (trailerUrl) {
-      setTrailerUrl("");
-    } else {
-      movieTrailer(movie?.name || movie?.title || "")
-        .then((url) => {
-          const urlParams = new URLSearchParams(new URL(url).search);
-          setTrailerUrl(urlParams.get("v"));
-          console.log(trailerUrl);
-        })
-        .catch((error) => console.log(error));
-    }
-  };
-
-  console.log(movies);
-
   switch (title) {
     case "Trending Movies":
     case "Trending Series":
@@ -53,13 +38,14 @@ function Row({ title, fetchUrl }) {
 
           <div className="row_posters">
             {movies.map((movie) => (
-              <img
-                key={movie.id}
-                onClick={() => handleClick(movie)}
-                className="row_poster"
-                src={`${base_url}${movie.poster_path || movie.profile_path} `}
-                alt={movie.name}
-              />
+              <Link to={"/detail/" + movie.title || movie.name}>
+                <img
+                  key={movie.id}
+                  className="row_poster"
+                  src={`${base_url}${movie.poster_path || movie.profile_path} `}
+                  alt={movie.name}
+                />
+              </Link>
             ))}
           </div>
           {trailerUrl && <YouTube videoId={trailerUrl} opts={opts} />}
@@ -77,7 +63,6 @@ function Row({ title, fetchUrl }) {
               .map((movie) => (
                 <img
                   key={movie.id}
-                  onClick={() => handleClick(movie)}
                   className="row_poster"
                   src={`${base_url}${movie.poster_path || movie.profile_path} `}
                   alt={movie.name}
