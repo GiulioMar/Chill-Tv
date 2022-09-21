@@ -1,25 +1,46 @@
 import React from "react";
 import "./App.css";
-import Row from "./components/Row";
-import requests from "./utils/request";
-import TopBanner from "./components/TopBanner";
-import Nav from "./components/Nav";
-import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
-import { Home, Detail } from "./pages";
+
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
+import { Home, Detail, Login } from "./pages";
 import { GlobalLayout } from "./components";
+import { useEffect } from "react";
+import { auth } from "./firebase";
 
 function App() {
+  const user = null;
+
+  useEffect(() => {
+    auth.onAuthStateChanged((userAuth) => {
+      if (userAuth) {
+      } else {
+      }
+    });
+
+    return;
+    unsubscribe;
+  }, []);
+
   return (
     <div className="app">
-      <GlobalLayout>
-        <Router>
-          <Routes>
-            <Route path="/" element={<Home />}/>
-            <Route path="/detail/:slug/:id" element={<Detail />}/>
-            <Route path="*"  element={<Navigate  to="/" replace/>}/>
-          </Routes>
-        </Router>
-      </GlobalLayout>
+      <Router>
+        {!user ? (
+          <Login />
+        ) : (
+          <GlobalLayout>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/detail/:slug/:id" element={<Detail />} />
+              <Route path="*" element={<Navigate to="/" replace />} />
+            </Routes>
+          </GlobalLayout>
+        )}
+      </Router>
     </div>
   );
 }

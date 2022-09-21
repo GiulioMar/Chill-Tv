@@ -1,0 +1,79 @@
+.login {
+  position: relative;
+  height: 100%;
+  background: url("https://i0.wp.com/www.hynerd.it/wp-content/uploads/2021/01/9eeba0b6d99ce6a2511032c202af94ab.jpg?fit=1200%2C675&ssl=1")
+    center no-repeat;
+  background-size: cover;
+}
+
+.login--gradient {
+  width: 100%;
+  z-index: 1;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.4);
+  background-image: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.8) 0,
+    rgba(0, 0, 0, 0) 60%,
+    rgba(0, 0, 0, 0.8) 100%
+  );
+}
+
+.login--button {
+  position: fixed;
+  right: 20px;
+  top: 20px;
+  padding: 10px 20px;
+  color: white;
+  background-color: rgb(180, 3, 3);
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+}
+
+.login--body > h1 {
+  font-size: 3.125rem;
+  margin-bottom: 20px;
+}
+
+.login--body > h2 {
+  font-size: 2rem;
+  font-weight: 400;
+  margin-bottom: 30px;
+}
+
+.login--body {
+  z-index: 1;
+  color: white;
+  padding: 20px;
+  position: absolute;
+  top: 30%;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  left: 0;
+  right: 0;
+}
+
+.login--input > form > input {
+  padding: 10px;
+  outline-width: 0;
+  height: 30px;
+  width: 30%;
+  border: none;
+  max-width: 600px;
+}
+
+.login--input > input {
+    margin: 20px;
+}
+
+.login--getStarted{
+    padding: 16px 20px;
+    font-size: 1rem;
+    color:white;
+    background-color: rgb(180, 3, 3);
+    border: none;
+    font-weight: 600;
+    cursor: pointer;
+}
