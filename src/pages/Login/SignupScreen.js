@@ -10,7 +10,7 @@ function SignupScreen() {
     e.preventDefault();
 
     auth
-      .createUsersWithEmailAndPassword(
+      .createUserWithEmailAndPassword(
         emailRef.current.value,
         passwordRef.current.value
       )

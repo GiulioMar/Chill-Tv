@@ -1,11 +1,13 @@
 import Home from "./Home";
 import Detail from "./Detail";
 import Login from "./Login";
+import Profile from "./Profile"
 
 
 
 export {
     Home,
     Detail,
-    Login
+    Login,
+    Profile
 }

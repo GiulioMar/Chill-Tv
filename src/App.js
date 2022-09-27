@@ -7,24 +7,33 @@ import {
   Route,
   Navigate,
 } from "react-router-dom";
-import { Home, Detail, Login } from "./pages";
-import { GlobalLayout } from "./components";
+import { Home, Detail, Login, Profile } from "./pages";                                  
+import { GlobalLayout } from "./components";        
 import { useEffect } from "react";
 import { auth } from "./firebase";
+import { useDispatch, useSelector } from "react-redux";
+import { login, logout, selectUser } from "./features/userSlice";
 
 function App() {
-  const user = null;
+  const user = useSelector(selectUser);
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    auth.onAuthStateChanged((userAuth) => {
+    const unsubscribe = auth.onAuthStateChanged((userAuth) => {
       if (userAuth) {
+        dispatch(
+          login({
+            uid: userAuth.uid,
+            email: userAuth.email,
+          })
+        );
       } else {
+        dispatch(logout());
       }
     });
 
-    return;
-    unsubscribe;
-  }, []);
+    return unsubscribe;
+  }, [dispatch]);
 
   return (
     <div className="app">
@@ -34,6 +43,7 @@ function App() {
         ) : (
           <GlobalLayout>
             <Routes>
+              <Route path="/profile" element={<Profile />} />
               <Route path="/" element={<Home />} />
               <Route path="/detail/:slug/:id" element={<Detail />} />
               <Route path="*" element={<Navigate to="/" replace />} />
