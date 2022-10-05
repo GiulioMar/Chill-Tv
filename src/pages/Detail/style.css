@@ -1,4 +1,15 @@
-.detail {
-  padding-top: 200px;
-  color: #fff;
+.detail{
+  color: white;
+  height: 100vh;
+}
+ 
+
+.detail_fadeBottom{
+  height: 630px;
+  background-image: linear-gradient(
+    180deg,
+    transparent,
+    rgba(37, 37, 37, 0.5),
+    #111
+  );
 }

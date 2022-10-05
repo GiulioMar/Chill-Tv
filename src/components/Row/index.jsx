@@ -4,10 +4,17 @@ import React, { useState, useEffect } from "react";
 import axios from "../../utils/axios";
 import "./style.css";
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { setProductDetails } from "../../features/productSlice";
+import { base_url } from "../../utils/utility";
 
-const base_url = "https://image.tmdb.org/t/p/original/";
+
+
+
 
 function Row({ title, fetchUrl }) {
+  const dispatch = useDispatch();
+  
   const [movies, setMovies] = useState([]);
   const [trailerUrl, setTrailerUrl] = useState("");
   useEffect(() => {
@@ -20,6 +27,8 @@ function Row({ title, fetchUrl }) {
     fetchData();
   }, [fetchUrl]);
 
+
+
   const opts = {
     height: "390",
     width: "100%",
@@ -28,6 +37,14 @@ function Row({ title, fetchUrl }) {
     },
   };
 
+const handleOnClickProduct = (product) => {
+  dispatch(
+    setProductDetails(product)
+  );
+}
+
+
+  
   switch (title) {
     case "Trending Movies":
     case "Trending Series":
@@ -38,7 +55,9 @@ function Row({ title, fetchUrl }) {
 
           <div className="row_posters">
             {movies.map((movie) => (
-              <Link to={`/detail/${movie.title || movie.name}/${movie.id}`}>
+              <Link 
+              onClick={() => handleOnClickProduct(movie)}
+              to={`/detail/${movie.title || movie.name}/${movie.id}`}>
                 <img
                   key={movie.id}
                   className="row_poster"
@@ -61,12 +80,16 @@ function Row({ title, fetchUrl }) {
             {movies
               .filter((el) => el.profile_path)
               .map((movie) => (
+                <Link 
+                onClick={() => handleOnClickProduct(movie)}
+                to={`/detail/${movie.title || movie.name}/${movie.id}`}>
                 <img
                   key={movie.id}
                   className="row_poster"
                   src={`${base_url}${movie.poster_path || movie.profile_path} `}
                   alt={movie.name}
                 />
+                </Link>
               ))}
           </div>
           {trailerUrl && <YouTube videoId={trailerUrl} opts={opts} />}

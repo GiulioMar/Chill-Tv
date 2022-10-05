@@ -71,6 +71,7 @@ function TopBanner() {
         <h1 className="topBanner_description">{movie?.overview}</h1>
         {trailerUrl && <YouTube videoId={trailerUrl} opts={opts} />}
       </div>
+
       <div className="topBanner_fadeBottom"></div>
     </header>
   );
